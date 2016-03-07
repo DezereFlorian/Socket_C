@@ -5,8 +5,8 @@ int main(int argc, char const *argv[]) {
   struct sockaddr_in localAddr, servAddr;
   struct hostent *h;
 
-  if(argc < 3){
-    printf("usage: %s <serveur> <data1> <data2> ... <dataN>\n", argv[0]);
+  if(argc < 4){
+    printf("usage: %s <serveur> <2 = fichier // 1 = mot> <data1> <data2> ... <dataN>\n", argv[0]);
     exit (1);
   }
 
@@ -47,16 +47,10 @@ int main(int argc, char const *argv[]) {
     exit(1);
   }
 
-  for(i = 2; i < argc; i++){;
-    rc = send(sd, argv[i], strlen(argv[i]) + 1, 0);
-
-    if(rc < 0){
-      perror("impossible d'envoyer les data");
-      close(sd);
-      exit(1);
-    }
-
-    printf("%s: data%u envoyé (%s)\n", argv[0], i - 1, argv[i]);
-  }
+  if(strcmp(argv[2],"1") == 0) send_line(argc, argv, sd, rc);
+  else if(strcmp(argv[2],"2") == 0) ask_fic(sd, argv[3]);
+  else printf("Vous n'avez pas entré 1 ou 2... ");
+  
+  close(sd);
   return 0;
 }

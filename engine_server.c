@@ -1,6 +1,6 @@
 #include "header.h"
 
-/*function readline permettant de lire une ligne d'un fichier*/
+/*fonction readline permettant de lire une ligne d'un fichier*/
 int read_line (int newSd, char *line_to_return){
   static int rcv_ptr = 0;
   static char rcv_msg[MAX_MSG];
