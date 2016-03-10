@@ -15,5 +15,6 @@
 #define MAX_MSG 100
 
 int read_line (int newSd, char *line_to_return);
-int send_line(int nb_data, char const *data[], int sd, int rc);
+int send_line(int nb_data, char const *data[], int sd);
 int ask_fic(int sd, const char *nom_fic);
+int lecture_fic(int sd);
