@@ -56,12 +56,15 @@ int lecture_fic(int socket_client){
   int longueur_data_send = 0; //longueur de la data qui sera envoyé
 
   recv(socket_client, nom_fic, strlen(nom_fic) + 1, 0);
+  perror("Bien recu debut du transfert");
   FILE* fic = fopen(nom_fic, "r");
-  printf("lqdfbgùgjerq,o*gqerpgjmrgjr*,rgjp");
+  perror("FICHIER OUVERT DEBUT ENVOI");
 
   while(!feof(fic)){
+    perror("ENVOI ENVOI ENVOI");
     longueur_data_send = fread(ln, sizeof(char), MAX_MSG, 0);
     send(socket_client, ln, longueur_data_send+1, 0);
+    perror("ENVOI FAIT FAIT FAIT");
   }
   send(socket_client, "EOF", 1, 0);
   fclose(fic);

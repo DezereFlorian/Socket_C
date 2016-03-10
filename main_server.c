@@ -34,8 +34,6 @@ int main(int argc, char const *argv[]) {
     cliLen = sizeof(cliAddr);
     Socket_client = accept(Socket_server, (struct sockaddr *) &cliAddr, &cliLen);
 
-    printf("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-
     //on vérifie que la connexction peut se faire
     if(Socket_client < 0){
       perror(" impossible d'accepter la connection ");
@@ -43,7 +41,7 @@ int main(int argc, char const *argv[]) {
     }
 
     //on remplit la variable line avec des 0
-    memset(line, 0x0, MAX_MSG);
+    //memset(line, 0x0, MAX_MSG);
 
     //cas d'une réception de data style "mots"
     // while(read_line(Socket_client, line) != ERROR){

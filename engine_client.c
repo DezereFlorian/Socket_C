@@ -20,18 +20,19 @@ int send_line(int nb_data, char const *data[], int sd){
 
 /*fonction permettant de demander au serveur d'envoyer un fichier*/
 int ask_fic(int Socket, const char *nom_fic){
-  printf("DEMANDE DE FICHIER....");
+  perror("DEMANDE DE FICHIER....");
   //allocation de mémoire pour la reception du fichier
   char *text_recu = malloc(sizeof(char) * MAX_MSG);
-
+perror("ENVOI NOM FIC");
   //envoie du nom du fichier donne en argument de l'execution du programme
   send(Socket, nom_fic, strlen(nom_fic) + 1, 0);
   //ouverture du fichier en ecriture
   FILE* fic = fopen(nom_fic, "w");
-
+perror("FICHIER CREER");
   //tant que on ne reçoit pas le caractère EOF on continu
   while(text_recu != "EOF"){
     recv(Socket, text_recu, MAX_MSG, 0);
+    perror("RECEPTION RECEPTION");
     if(text_recu != "EOF") fwrite(text_recu, sizeof(char), MAX_MSG, fic);
     //on ecrit dans le fichier si ce que l'on reçoit ne vaut pas EOF
   }
