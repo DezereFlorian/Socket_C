@@ -50,11 +50,11 @@ int main(int argc, char const *argv[]) {
   }
 
   //on regarde ce que l'on doit faire, envoyer une ou deux données ou demander un fichier
-  /*if(strcmp(argv[2],"1") == 0) send_line(argc, argv, Socket_perso);
+  if(strcmp(argv[2],"1") == 0) send_line(argc, argv, Socket_perso);
   else if(strcmp(argv[2],"2") == 0) ask_fic(Socket_perso, argv[3]);
-  else printf("Vous n'avez pas entré 1 ou 2... ");*/
+  else printf("Vous n'avez pas entré 1 ou 2... ");
 
-  ask_fic(Socket_perso, argv[3]);
+//  ask_fic(Socket_perso, argv[3]);
 
   //on ferme la socket
   close(Socket_perso);

@@ -40,15 +40,15 @@ int main(int argc, char const *argv[]) {
       return ERROR;
     }
 
-    //on remplit la variable line avec des 0
-    //memset(line, 0x0, MAX_MSG);
+    // on remplit la variable line avec des 0
+    memset(line, 0x0, MAX_MSG);
 
-    //cas d'une réception de data style "mots"
-    // while(read_line(Socket_client, line) != ERROR){
-    //   printf("%s: reçu de %s: TCP%d : %s\n", argv[0], inet_ntoa(cliAddr.sin_addr), ntohs(cliAddr.sin_port), line);
-    //   memset(line, 0x0, MAX_MSG); //initialisation de la ligne
-    // }
+    // cas d'une réception de data style "mots"
+    while(read_line(Socket_client, line) != ERROR){
+      printf("%s: reçu de %s: TCP%d : %s\n", argv[0], inet_ntoa(cliAddr.sin_addr), ntohs(cliAddr.sin_port), line);
+      memset(line, 0x0, MAX_MSG); //initialisation de la ligne
+    }
     //cas d'une réception de data style demande de transfert de fichier
-    lecture_fic(Socket_client);
+    // lecture_fic(Socket_client);
   }
 }
